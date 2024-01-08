@@ -1,10 +1,10 @@
-<h1 align="center"> Fast FastAPI boilerplate</h1>
+<h1 align="center">Village Wala Backend</h1>
 <p align="center" markdown=1>
-  <i>Yet another template to speed your FastAPI development up.</i>
+  <i>Source code for village wala backend repo.</i>
 </p>
 
 <p align="center">
-  <a href="https://github.com/igormagalhaesr/FastAPI-boilerplate">
+  <a href="">
     <img src="https://user-images.githubusercontent.com/43156212/277095260-ef5d4496-8290-4b18-99b2-0c0b5500504e.png" alt="Blue Rocket with FastAPI Logo as its window. There is a word FAST written" width="35%" height="auto">
   </a>
 </p>
@@ -35,7 +35,7 @@
 
 ## 0. About
 
-**FastAPI boilerplate** creates an extendable async API using FastAPI, Pydantic V2, SQLAlchemy 2.0 and PostgreSQL:
+**This project** creates an extendable async API using FastAPI, Pydantic V2, SQLAlchemy 2.0 and PostgreSQL:
 
 - [`FastAPI`](https://fastapi.tiangolo.com): modern Python web framework for building APIs
 - [`Pydantic V2`](https://docs.pydantic.dev/2.4/): the most widely used data Python validation library, rewritten in Rust [`(5x-50x faster)`](https://docs.pydantic.dev/latest/blog/pydantic-v2-alpha/)
@@ -117,17 +117,7 @@ ______________________________________________________________________
 
 ### 3.0 Start
 
-Start by using the template, and naming the repository to what you want.
 
-<p align="left">
-    <img src="https://user-images.githubusercontent.com/43156212/277866726-975d1c98-b1c9-4c8e-b4bd-001c8a5728cb.png" alt="clicking use this template button, then create a new repository option" width="35%" height="auto">
-</p>
-
-Then clone your created repository (I'm using the base for the example)
-
-```sh
-git clone https://github.com/igormagalhaesr/FastAPI-boilerplate
-```
 
 > \[!TIP\]
 > If you are in a hurry, you may use one of the following templates (containing a `.env`, `docker-compose.yml` and `Dockerfile`):
@@ -290,7 +280,7 @@ ENVIRONMENT="local"
 ### 3.2 Docker Compose (preferred)
 
 To do it using docker compose, ensure you have docker and docker compose installed, then:
-While in the base project directory (FastAPI-boilerplate here), run:
+While in the base project directory (Village-wala here), run:
 
 ```sh
 docker compose up
@@ -320,11 +310,11 @@ docker compose up
 You get the following outputs (in addition to many other outputs):
 
 ```sh
-fastapi-boilerplate-worker-1  | ... redis_version=x.x.x mem_usage=999K clients_connected=1 db_keys=0
+village-wala-worker-1  | ... redis_version=x.x.x mem_usage=999K clients_connected=1 db_keys=0
 ...
-fastapi-boilerplate-db-1      | ... [1] LOG:  database system is ready to accept connections
+village-wala-db-1      | ... [1] LOG:  database system is ready to accept connections
 ...
-fastapi-boilerplate-web-1     | INFO:     Application startup complete.
+village-wala-web-1     | INFO:     Application startup complete.
 ```
 
 So you may skip to [5. Extending](#5-extending).
@@ -333,7 +323,7 @@ So you may skip to [5. Extending](#5-extending).
 
 #### 4.2.1. Packages
 
-In the `root` directory (`FastAPI-boilerplate` if you didn't change anything), run to install required packages:
+In the `root` directory (`Village-wala` if you didn't change anything), run to install required packages:
 
 ```sh
 poetry install
@@ -1335,7 +1325,7 @@ And a `pro` tier:
 Then I'll associate a `rate_limit` for the path `api/v1/tasks/task` for each of them, I'll associate a `rate limit` for the path `api/v1/tasks/task`.
 
 > \[!WARNING\]
-> Do not forget to add `api/v1/...` or any other prefix to the beggining of your path. For the structure of the boilerplate, `api/v1/<rest_of_the_path>`
+> Do not forget to add `api/v1/...` or any other prefix to the beggining of your path. For the structure of the project, `api/v1/<rest_of_the_path>`
 
 1 request every hour (3600 seconds) for the free tier:
 
@@ -1777,22 +1767,32 @@ poetry run python -m pytest
 
 ## 8. Contributing
 
-Read [contributing](CONTRIBUTING.md).
+Contributions are appreciated, even if just reporting bugs, documenting stuff or answering questions. To contribute with a feature:
 
-## 9. References
 
-This project was inspired by a few projects, it's based on them with things changed to the way I like (and pydantic, sqlalchemy updated)
+#### Using pre-commit for Better Code Quality
 
-- [`Full Stack FastAPI and PostgreSQL`](https://github.com/tiangolo/full-stack-fastapi-postgresql) by @tiangolo himself
-- [`FastAPI Microservices`](https://github.com/Kludex/fastapi-microservices) by @kludex which heavily inspired this boilerplate
-- [`Async Web API with FastAPI + SQLAlchemy 2.0`](https://github.com/rhoboro/async-fastapi-sqlalchemy) for sqlalchemy 2.0 ORM examples
-- [`FastaAPI Rocket Boilerplate`](https://github.com/asacristani/fastapi-rocket-boilerplate/tree/main) for docker compose
+It helps in identifying simple issues before submission to code review. By running automated checks, pre-commit can ensure code quality and consistency.
+
+1. **Install Pre-commit**:
+   - **Installation**: Install pre-commit in your development environment. Use the command `pip install pre-commit`.
+   - **Setting Up Hooks**: After installing pre-commit, set up the hooks with `pre-commit install`. This command will install hooks into your .git/ directory which will automatically check your commits for issues.
+1. **Committing Your Changes**:
+   After making your changes, use `git commit -am 'Add some fooBar'` to commit them. Pre-commit will run automatically on your files when you commit, ensuring that they meet the required standards.
+   Note: If pre-commit identifies issues, it may block your commit. Fix these issues and commit again. This ensures that all contributions are of high quality.
+1. **Pushing Changes and Creating Pull Request**:
+   Push your changes to the branch using `git push origin feature/fooBar`.
+   Visit your fork on GitHub and create a new Pull Request to the main repository.
+
+#### Additional Notes
+
+**Stay Updated**: Keep your fork updated with the main repository to avoid merge conflicts. Regularly fetch and merge changes from the upstream repository.
+**Adhere to Project Conventions**: Follow the coding style, conventions, and commit message guidelines of the project.
+**Open Communication**: Feel free to ask questions or discuss your ideas by opening an issue or in discussions.
+
+
 
 ## 10. License
 
 [`MIT`](LICENSE.md)
 
-## 11. Contact
-
-Igor Magalhaes – [@igormagalhaesr](https://twitter.com/igormagalhaesr) – igormagalhaesr@gmail.com
-[github.com/igorbenav](https://github.com/igorbenav/)

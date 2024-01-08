@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "fastapi-boilerplate"
+name = "village-wala"
 version = "0.1.0"
-description = "A fully Async FastAPI boilerplate using SQLAlchemy and Pydantic 2"
+description = "A fully Async FastAPI project using SQLAlchemy and Pydantic 2"
 authors = ["Igor Magalhaes <igor.magalhaes.r@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -12,8 +12,8 @@ python = "^3.11"
 python-dotenv = "^1.0.0"
 pydantic = { extras = ["email"], version = "^2.4.1" }
 fastapi = "^0.103.1"
-uvicorn = "^0.23.2"
-uvloop = "^0.17.0"
+uvicorn = {extras = ["standard"], version = "^0.23.2" }
+uvloop = "^0.19.0"
 httptools = "^0.6.0"
 uuid = "^1.30"
 alembic = "^1.12.0"
