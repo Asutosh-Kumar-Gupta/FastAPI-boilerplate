@@ -3,11 +3,6 @@
   <i>Source code for village wala backend repo.</i>
 </p>
 
-<p align="center">
-  <a href="">
-    <img src="https://user-images.githubusercontent.com/43156212/277095260-ef5d4496-8290-4b18-99b2-0c0b5500504e.png" alt="Blue Rocket with FastAPI Logo as its window. There is a word FAST written" width="35%" height="auto">
-  </a>
-</p>
 
 <p align="center">
   <a href="">
