@@ -50,8 +50,8 @@
 - 🏬 Easy redis caching
 - 👜 Easy client-side caching
 - 🚦 ARQ integration for task queue
-- ⚙️ Efficient querying (only queries what's needed) with support for joins
-- ⎘ Out of the box pagination support
+- ⚙️ Efficient and robust queries with <a href="https://github.com/igorbenav/fastcrud">fastcrud</a>
+- ⎘ Out of the box offset and cursor pagination support with <a href="https://github.com/igorbenav/fastcrud">fastcrud</a>
 - 🛑 Rate Limiter dependency
 - 👮 FastAPI docs behind authentication and hidden based on the environment
 - 🦾 Easily extendable
@@ -168,7 +168,7 @@ To connect to the database, log into the PGAdmin console with the values specifi
 
 Once in the main PGAdmin screen, click Add Server:
 
-![pgadmin-connect](https://private-user-images.githubusercontent.com/43156212/289698727-e15693b6-fae9-4ec6-a597-e70ab6f44133.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQwNTEzMDksIm5iZiI6MTcwNDA1MTAwOSwicGF0aCI6Ii80MzE1NjIxMi8yODk2OTg3MjctZTE1NjkzYjYtZmFlOS00ZWM2LWE1OTctZTcwYWI2ZjQ0MTMzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyMzEyMzElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMjMxVDE5MzAwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk0NmIxN2VhZTRkNGU1MGYzMWUwOTE2Yjg1YzUzOGQ0M2YwNDRiZjI4ZWUwMmM1ODJiNTgxYmY0NjJkOGQ4NDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.cKlDYeBvXyGF86PCOYJQ4DvBehfy3Cz5ncf9BN8umE0)
+![pgadmin-connect](https://github.com/igorbenav/docs-images/blob/main/289698727-e15693b6-fae9-4ec6-a597-e70ab6f44133-3.png?raw=true)
 
 1. Hostname/address is `db` (if using containers)
 1. Is the value you specified in `POSTGRES_PORT`
@@ -734,14 +734,15 @@ poetry run alembic upgrade head
 
 ### 5.6 CRUD
 
-Inside `app/crud`, create a new `crud_entities.py` inheriting from `CRUDBase` for each new entity:
+Inside `app/crud`, create a new `crud_entities.py` inheriting from `FastCRUD` for each new entity:
 
 ```python
-from app.crud.crud_base import CRUDBase
+from fastcrud import FastCRUD
+
 from app.models.entity import Entity
 from app.schemas.entity import EntityCreateInternal, EntityUpdate, EntityUpdateInternal, EntityDelete
 
-CRUDEntity = CRUDBase[Entity, EntityCreateInternal, EntityUpdate, EntityUpdateInternal, EntityDelete]
+CRUDEntity = FastCRUD[Entity, EntityCreateInternal, EntityUpdate, EntityUpdateInternal, EntityDelete]
 crud_entity = CRUDEntity(Entity)
 ```
 
@@ -752,7 +753,7 @@ So, for users:
 from app.model.user import User
 from app.schemas.user import UserCreateInternal, UserUpdate, UserUpdateInternal, UserDelete
 
-CRUDUser = CRUDBase[User, UserCreateInternal, UserUpdate, UserUpdateInternal, UserDelete]
+CRUDUser = FastCRUD[User, UserCreateInternal, UserUpdate, UserUpdateInternal, UserDelete]
 crud_users = CRUDUser(User)
 ```
 
